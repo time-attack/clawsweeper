@@ -74,7 +74,7 @@ Protected authors are skipped before model spend:
 - GitHub bot accounts
 - configured trusted bots
 
-Outputs in `openclaw/clawsweeper-state`:
+Outputs in `time-attack/clawsweeper-state`:
 
 - `results/spam-scanner-latest.json`: latest run summary
 - `results/spam-scanner.json`: durable processed comment-version ledger
@@ -167,7 +167,7 @@ Manual workflow dispatch:
 
 ```bash
 gh workflow run spam-scanner.yml \
-  --repo openclaw/clawsweeper \
+  --repo time-attack/clawsweeper \
   --ref main \
   -f target_repo=openclaw/openclaw \
   -f lookback_minutes=180 \

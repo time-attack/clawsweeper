@@ -48,7 +48,7 @@ Important source files:
 - `records/<repo-slug>/closed/<number>.md`: archived closed reports
 
 Generated state is published to the `state` branch of
-`openclaw/clawsweeper-state`. Its `main` branch contains dashboard renderer
+`time-attack/clawsweeper-state`. Its `main` branch contains dashboard renderer
 source only. For local record inspection, switch that checkout to `state` or run
 `scripts/hydrate-state.ts` from a `state`-branch checkout before using
 `records/`.
@@ -86,7 +86,7 @@ without stale review snapshots reviving closed records.
 - audit: `12 */6 * * *`
 - review and apply work is gated by `CLAWSWEEPER_ENABLE_CLAWHUB=1`
 
-`openclaw/clawsweeper`:
+`time-attack/clawsweeper`:
 
 - audit: `17 */6 * * *`
 - self-review is primarily manual or event-driven; scheduled audit keeps the
@@ -551,7 +551,7 @@ GitHub state. Scheduled audit currently covers:
 
 - `openclaw/openclaw`: `7 */6 * * *`
 - `openclaw/clawhub`: `12 */6 * * *`
-- `openclaw/clawsweeper`: `17 */6 * * *`
+- `time-attack/clawsweeper`: `17 */6 * * *`
 
 The audit lane first tries a ClawSweeper GitHub App read token for the target
 repository. If that token is unavailable, it falls back to the workflow token for
@@ -573,7 +573,7 @@ fast reconciler once before committing records. It does not run the slower
 artifact-apply reconciler and the explicit publish reconciler back to back.
 
 After publishing audit state and reconciled records, audit dispatches the
-`openclaw/clawsweeper-state` dashboard renderer; that repository's 15-minute
+`time-attack/clawsweeper-state` dashboard renderer; that repository's 15-minute
 schedule remains the fallback if dispatch is delayed.
 
 ## Monitoring
@@ -581,13 +581,13 @@ schedule remains the fallback if dispatch is delayed.
 Useful commands:
 
 ```bash
-gh api 'repos/openclaw/clawsweeper/actions/runs?per_page=100' \
+gh api 'repos/time-attack/clawsweeper/actions/runs?per_page=100' \
   --jq '.workflow_runs[] | select(.name == "ClawSweeper") | {id,name,display_title,event,status,conclusion,created_at,head_sha,html_url}'
 
-gh run view <run-id> --repo openclaw/clawsweeper --json jobs \
+gh run view <run-id> --repo time-attack/clawsweeper --json jobs \
   --jq '[.jobs[] | select(.name | startswith("Review shard")) | select(.status=="in_progress")] | length'
 
-gh api repos/openclaw/clawsweeper/readme --jq '.content' | base64 --decode
+gh api repos/time-attack/clawsweeper/readme --jq '.content' | base64 --decode
 ```
 
 Read the remote generated README, not only the local checkout, when checking the

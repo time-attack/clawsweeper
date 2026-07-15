@@ -56,7 +56,7 @@ jobs:
       snapshot_provenance_state: ${{ steps.authorize.outputs.snapshot_provenance_state }}
     env:
       CI: "true"
-      CLAWSWEEPER_APP_CLIENT_ID: Iv23liOECG0slfuhz093
+      CLAWSWEEPER_APP_CLIENT_ID: Iv23liQswtjAxzxkCqb4
       TARGET_REPOSITORY: openclaw/crawl-remote
     steps:
       - name: Create exact-repository read token
@@ -65,7 +65,7 @@ jobs:
         with:
           client-id: ${{ env.CLAWSWEEPER_APP_CLIENT_ID }}
           private-key: ${{ secrets.CLAWSWEEPER_APP_PRIVATE_KEY }}
-          owner: openclaw
+          owner: garrytan
           repositories: crawl-remote
           permission-contents: read
 
@@ -463,7 +463,7 @@ jobs:
       ARTIFACT_NAME: ${{ needs.preflight.outputs.artifact_name }}
       BASH_ENV: ""
       CI: "true"
-      CLAWSWEEPER_APP_CLIENT_ID: Iv23liOECG0slfuhz093
+      CLAWSWEEPER_APP_CLIENT_ID: Iv23liQswtjAxzxkCqb4
       CLOUDFLARE_ACCOUNT_ID: 91b59577e757131d68d55a471fe32aca
       D1_MUTATION_MIN_REMAINING_SECONDS: "1440"
       DEPLOYMENT_RECOVERY_TIMEOUT_SECONDS: "120"
@@ -509,7 +509,7 @@ jobs:
         with:
           client-id: ${{ env.CLAWSWEEPER_APP_CLIENT_ID }}
           private-key: ${{ secrets.CLAWSWEEPER_APP_PRIVATE_KEY }}
-          owner: openclaw
+          owner: garrytan
           repositories: clawsweeper
           # GitHub classifies deployment-branch-policy reads under Actions.
           permission-actions: read
@@ -768,7 +768,7 @@ jobs:
         with:
           client-id: ${{ env.CLAWSWEEPER_APP_CLIENT_ID }}
           private-key: ${{ secrets.CLAWSWEEPER_APP_PRIVATE_KEY }}
-          owner: openclaw
+          owner: garrytan
           repositories: crawl-remote
           permission-actions: read
           permission-contents: read
@@ -949,7 +949,7 @@ jobs:
       - name: Checkout trusted deployment toolchain
         uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7
         with:
-          repository: openclaw/clawsweeper
+          repository: time-attack/clawsweeper
           ref: ${{ github.sha }}
           sparse-checkout: .github/deploy/crawl-remote-toolchain
           sparse-checkout-cone-mode: false

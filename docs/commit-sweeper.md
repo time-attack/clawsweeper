@@ -74,7 +74,7 @@ Manual workflow dispatch supports:
 The receiver waits 60 seconds by default before selecting commits. This gives
 the target `main` push event time to settle across GitHub and the runner without
 holding the planner for a full review cycle. Override it on
-`openclaw/clawsweeper` with:
+`time-attack/clawsweeper` with:
 
 ```text
 CLAWSWEEPER_COMMIT_REVIEW_SETTLE_SECONDS=60
@@ -191,12 +191,12 @@ actionable `result: findings` reports to this repo's
 `repair-commit-finding-intake.yml` workflow. The older
 `repository_dispatch` mode is still available in the CLI for tests or future
 App-permission changes, but the workflow uses `workflow_dispatch` so the
-ClawSweeper App only needs Actions write access on `openclaw/clawsweeper`.
+ClawSweeper App only needs Actions write access on `time-attack/clawsweeper`.
 
 The dispatch is intentionally report-based. ClawSweeper sends the target repo,
 commit SHA, report repo, report path, report URL, severity, check conclusion,
 and source run URL. The repair intake fetches the report from latest
-`openclaw/clawsweeper@main`, writes an audit record, and decides whether an
+`time-attack/clawsweeper@main`, writes an audit record, and decides whether an
 automatic PR makes sense on latest target `main`.
 
 Disable this without code changes by setting:
@@ -236,7 +236,7 @@ variable in the target repository that runs the dispatch workflow:
 CLAWSWEEPER_COMMIT_REVIEW_CREATE_CHECKS=true
 ```
 
-The receiver also honors the same variable on `openclaw/clawsweeper` when a
+The receiver also honors the same variable on `time-attack/clawsweeper` when a
 manual or repository dispatch omits `create_checks`.
 
 Commit Sweeper does not post comments. Markdown reports are the primary public

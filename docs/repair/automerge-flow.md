@@ -219,7 +219,7 @@ posting another maintainer command:
 
 ```bash
 gh workflow run repair-comment-router.yml \
-  --repo openclaw/clawsweeper \
+  --repo time-attack/clawsweeper \
   --ref main \
   -f execute=true \
   -f force_reprocess=true \

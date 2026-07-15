@@ -80,7 +80,7 @@ times are not shown because the current data cannot support them accurately.
 
 ## Assets And Deployment
 
-The page, status API, and image assets all belong to `openclaw/clawsweeper`:
+The page, status API, and image assets all belong to `time-attack/clawsweeper`:
 
 - `dashboard/bay-page.ts` renders the page.
 - `dashboard/worker.ts` serves `/bay-demo` and derives the bounded Bay state.

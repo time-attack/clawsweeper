@@ -24,7 +24,7 @@ The normal event flow is:
 6. The agent sends the final message to the configured delivery target, or
    replies `NO_REPLY` when the event is intentionally silent.
 7. ClawSweeper records successful sends in the ledger and publishes it to
-   `openclaw/clawsweeper-state`.
+   `time-attack/clawsweeper-state`.
 
 The hook call is best-effort by default. A Discord outage or Gateway outage
 must not make an already-completed GitHub mutation roll back or fail the state
@@ -136,7 +136,7 @@ When adding another ClawSweeper-to-OpenClaw event:
    failed send, ledger dedupe, and rerun behavior.
 4. Add the workflow step after the durable event source exists and before the
    state commit that publishes the ledger.
-5. Publish the event report and ledger path to `openclaw/clawsweeper-state`.
+5. Publish the event report and ledger path to `time-attack/clawsweeper-state`.
 6. Document required secrets, variables, target channel, and replay behavior.
 
 Do not send directly from every worker. Send once from the publish/finalizer job
@@ -176,7 +176,7 @@ The `github activity to openclaw` workflow feeds broader GitHub activity to the
 same agent. This lane is intentionally different from the ClawSweeper event
 stream: it is observation, not notification-by-default.
 
-Native events on `openclaw/clawsweeper` include issues, issue comments, PR
+Native events on `time-attack/clawsweeper` include issues, issue comments, PR
 state changes, reviews, review comments, and selected workflow completions.
 Target repositories can also forward normalized activity with
 `repository_dispatch` type `github_activity`.
@@ -260,7 +260,7 @@ forward general activity:
       --arg action "$SOURCE_ACTION" \
       --arg actor "$ACTOR" \
       '{event_type:"github_activity",client_payload:{activity:{type:$event_name,repo:$repo,action:$action,actor:$actor}}}')"
-    gh api repos/openclaw/clawsweeper/dispatches \
+    gh api repos/time-attack/clawsweeper/dispatches \
       --method POST \
       --input - <<< "$payload"
 ```

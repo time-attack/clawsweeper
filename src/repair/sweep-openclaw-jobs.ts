@@ -280,7 +280,7 @@ function readOpenClawSweeperPrClusters() {
 }
 
 function readActiveClusterRuns() {
-  const repo = process.env.CLAWSWEEPER_REPO ?? "openclaw/clawsweeper";
+  const repo = process.env.CLAWSWEEPER_REPO ?? "time-attack/clawsweeper";
   const statuses = new Set(["queued", "in_progress", "waiting", "requested", "pending"]);
   const workflowName = workflowDisplayName(REPAIR_CLUSTER_WORKFLOW);
   const runs = ghJson<LooseRecord[]>([

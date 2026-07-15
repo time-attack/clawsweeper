@@ -128,10 +128,10 @@ Use the `commit finding intake` workflow for a ClawSweeper commit report:
 
 ```bash
 gh workflow run repair-commit-finding-intake.yml \
-  --repo openclaw/clawsweeper \
+  --repo time-attack/clawsweeper \
   -f target_repo=openclaw/openclaw \
   -f commit_sha=<sha> \
-  -f report_repo=openclaw/clawsweeper \
+  -f report_repo=time-attack/clawsweeper \
   -f report_path=records/openclaw-openclaw/commits/<sha>.md
 ```
 
@@ -207,7 +207,7 @@ Required repository configuration:
 
 Successful event notifications are recorded in
 `notifications/clawsweeper-event-ledger.json` in
-`openclaw/clawsweeper-state`, keyed by event type, repo, target, action, status,
+`time-attack/clawsweeper-state`, keyed by event type, repo, target, action, status,
 and stable mutation evidence. This prevents duplicate Discord posts when the
 publish workflow reruns.
 
@@ -229,7 +229,7 @@ Every merge action must carry `merge_preflight`. Missing security clearance, unr
 ## Runner Strategy
 
 Use `ubuntu-latest` for ClawSweeper parity and correctness smoke tests.
-Use `openclaw/clawsweeper` as the target repo when you need a self-contained
+Use `time-attack/clawsweeper` as the target repo when you need a self-contained
 event, review, comment-router, or automerge smoke that should not touch product
 repositories.
 

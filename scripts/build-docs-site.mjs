@@ -6,7 +6,7 @@ import { socialCardPng } from "./social-card.mjs";
 const root = process.cwd();
 const docsDir = path.join(root, "docs");
 const outDir = path.join(root, "dist", "docs-site");
-const repoUrl = "https://github.com/openclaw/clawsweeper";
+const repoUrl = "https://github.com/time-attack/clawsweeper";
 const repoEditBase = `${repoUrl}/edit/main/docs`;
 const customDomain = "clawsweeper.bot";
 

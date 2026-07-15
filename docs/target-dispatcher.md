@@ -1,6 +1,6 @@
 # Target Repository Dispatcher
 
-`openclaw/clawsweeper` cannot receive native `issues` or `pull_request` events
+`time-attack/clawsweeper` cannot receive native `issues` or `pull_request` events
 from sibling repositories directly. Target repositories should forward those
 events with `repository_dispatch` so ClawSweeper can run a single-job exact
 one-item review, sync the durable review comment, and immediately apply a safe
@@ -31,7 +31,7 @@ needs repo-specific review guidance.
 
 Exact event reviews enable related issue GitHub Search by default so newly
 opened issues get stronger duplicate and adjacent-report context. Set repository
-variable `CLAWSWEEPER_RELATED_GITHUB_SEARCH=0` on `openclaw/clawsweeper` to turn
+variable `CLAWSWEEPER_RELATED_GITHUB_SEARCH=0` on `time-attack/clawsweeper` to turn
 that enrichment off without editing the target dispatcher.
 
 Before enabling the workflow:
@@ -68,7 +68,7 @@ jobs:
     if: ${{ !(endsWith(github.actor, '[bot]') && (github.event.action == 'labeled' || github.event.action == 'unlabeled')) }}
     env:
       HAS_CLAWSWEEPER_APP_PRIVATE_KEY: ${{ secrets.CLAWSWEEPER_APP_PRIVATE_KEY != '' }}
-      CLAWSWEEPER_APP_CLIENT_ID: Iv23liOECG0slfuhz093
+      CLAWSWEEPER_APP_CLIENT_ID: Iv23liQswtjAxzxkCqb4
       SUPERSEDES_IN_PROGRESS: ${{ (github.event.action == 'edited' || github.event.action == 'synchronize' || github.event.action == 'ready_for_review') && 'true' || 'false' }}
     steps:
       - name: Debounce bursty metadata events
@@ -138,7 +138,7 @@ jobs:
             --arg source_action "$SOURCE_ACTION" \
             --argjson supersedes_in_progress "$SUPERSEDES_IN_PROGRESS" \
             '{event_type:"clawsweeper_item",client_payload:{target_repo:$target_repo,item_number:$item_number,item_kind:$item_kind,source_event:$source_event,source_action:$source_action,supersedes_in_progress:$supersedes_in_progress}}')"
-          gh api repos/openclaw/clawsweeper/dispatches \
+          gh api repos/time-attack/clawsweeper/dispatches \
             --method POST \
             --input - <<< "$payload"
 
@@ -207,7 +207,7 @@ jobs:
             --arg source_event "issue_comment" \
             --arg source_action "$SOURCE_ACTION" \
             '{event_type:"clawsweeper_comment",client_payload:({target_repo:$target_repo,item_number:$item_number,comment_id:$comment_id,source_event:$source_event,source_action:$source_action,max_comments:"1"} + (if $status_comment_id != "" then {status_comment_id:($status_comment_id|tonumber)} else {} end))}')"
-          GH_TOKEN="$DISPATCH_TOKEN" gh api repos/openclaw/clawsweeper/dispatches \
+          GH_TOKEN="$DISPATCH_TOKEN" gh api repos/time-attack/clawsweeper/dispatches \
             --method POST \
             --input - <<< "$payload"
 ```
@@ -237,7 +237,7 @@ endpoint is `/github/webhook`; the local equivalent is
 `CLAWSWEEPER_WEBHOOK_SECRET`, accepts eligible public `openclaw/*` and
 `steipete/*` `issue_comment`, `issues`, and `pull_request` events, mints a
 target installation token for acknowledgement/comment reactions, mints the
-`openclaw/clawsweeper` installation token for repository dispatch, and queues
+`time-attack/clawsweeper` installation token for repository dispatch, and queues
 exact `clawsweeper_comment` or `clawsweeper_item` work. The durable Worker
 queue dispatches at most 64 leased exact-review executors, with up to 60 active
 reviews per target repository. Keep the Actions
@@ -290,7 +290,7 @@ concurrency:
 ```
 
 The job mints one short-lived `clawsweeper` App token scoped to
-`openclaw/clawsweeper`, then sends one `clawsweeper_item` or
+`time-attack/clawsweeper`, then sends one `clawsweeper_item` or
 `clawsweeper_comment` `repository_dispatch`. For comments, the
 `Pre-filter ClawSweeper comment` step runs before the target write token is
 minted, so ordinary comments consume neither a target installation token nor a

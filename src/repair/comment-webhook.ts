@@ -15,7 +15,7 @@ import { isExactReviewCloseGuardLabel } from "./exact-review-guard-labels.js";
 import { commentBodySha256 } from "./comment-router-utils.js";
 
 const DEFAULT_PORT = 8787;
-const REVIEW_REPO = "openclaw/clawsweeper";
+const REVIEW_REPO = "time-attack/clawsweeper";
 const COMMAND_PATTERN =
   /(^|[ \t\r\n])@(?:clawsweeper|openclaw-clawsweeper)\b(?:\[bot\])?|(^|[ \t\r\n])\/(?:clawsweeper|review|re-review|rerun[ -]?review|status|explain|fix|build|implement|create[ -]?pr|fix[ -]?issue|autofix|auto[ -]?fix|automerge|auto[ -]?merge|approve|stop|autoclose)\b/i;
 const ALLOWED_ASSOCIATIONS = new Set(["OWNER", "MEMBER", "COLLABORATOR"]);

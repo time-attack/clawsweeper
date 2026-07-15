@@ -43,7 +43,7 @@ workflow and GitHub App installation.
 4. Open, edit, or comment on a target issue/PR and confirm a dispatcher run
    appears in the target repo.
 5. Confirm the receiver run appears in
-   `https://github.com/openclaw/clawsweeper/actions`.
+   `https://github.com/time-attack/clawsweeper/actions`.
 6. Confirm the target item gets one durable ClawSweeper review comment.
 
 For a repo that should appear in the README dashboard or scheduled queues, add

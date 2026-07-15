@@ -27,7 +27,7 @@ on:
       report_repo:
         description: "Repository containing the ClawSweeper report"
         required: false
-        default: "openclaw/clawsweeper-state"
+        default: "time-attack/clawsweeper-state"
         type: string
       report_path:
         description: "Path to the ClawSweeper report"
@@ -61,7 +61,7 @@ permissions:
 
 env:
   FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: "true"
-  CLAWSWEEPER_APP_CLIENT_ID: Iv23liOECG0slfuhz093
+  CLAWSWEEPER_APP_CLIENT_ID: Iv23liQswtjAxzxkCqb4
   CLAWSWEEPER_ALLOW_EXECUTE: ${{ vars.CLAWSWEEPER_ALLOW_EXECUTE == '1' && '1' || '0' }}
   CLAWSWEEPER_ALLOW_FIX_PR: ${{ vars.CLAWSWEEPER_ALLOW_FIX_PR == '1' && '1' || '0' }}
   CLAWSWEEPER_ALLOW_MERGE: "0"
@@ -147,7 +147,7 @@ jobs:
         with:
           client-id: ${{ env.CLAWSWEEPER_APP_CLIENT_ID }}
           private-key: ${{ secrets.CLAWSWEEPER_APP_PRIVATE_KEY }}
-          owner: openclaw
+          owner: garrytan
           repositories: clawsweeper
           permission-actions: write
           permission-contents: write
@@ -176,7 +176,7 @@ jobs:
           TARGET_REPO: ${{ github.event.inputs.target_repo || github.event.client_payload.target_repo || 'openclaw/openclaw' }}
           ITEM_NUMBER: ${{ github.event.inputs.item_number || github.event.client_payload.item_number }}
           CANDIDATE_KIND: ${{ github.event.inputs.candidate_kind || github.event.client_payload.candidate_kind || 'strict_bug' }}
-          REPORT_REPO: ${{ github.event.inputs.report_repo || github.event.client_payload.report_repo || 'openclaw/clawsweeper-state' }}
+          REPORT_REPO: ${{ github.event.inputs.report_repo || github.event.client_payload.report_repo || 'time-attack/clawsweeper-state' }}
           REPORT_PATH: ${{ github.event.inputs.report_path || github.event.client_payload.report_path }}
           REPORT_URL: ${{ github.event.inputs.report_url || github.event.client_payload.report_url }}
         run: |

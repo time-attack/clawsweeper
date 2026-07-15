@@ -62,7 +62,7 @@ function prepare() {
   const targetRepo = stringArg("target-repo", stringArg("target_repo", "openclaw/openclaw"));
   const reportRepo = stringArg(
     "report-repo",
-    stringArg("report_repo", "openclaw/clawsweeper-state"),
+    stringArg("report_repo", "time-attack/clawsweeper-state"),
   );
   const itemNumber = positiveInteger(
     stringArg("item-number", stringArg("item_number", "")),
@@ -167,7 +167,7 @@ function candidates() {
   const targetRepo = stringArg("target-repo", stringArg("target_repo", "openclaw/openclaw"));
   const reportRepo = stringArg(
     "report-repo",
-    stringArg("report_repo", "openclaw/clawsweeper-state"),
+    stringArg("report_repo", "time-attack/clawsweeper-state"),
   );
   const reportDir = stringArg("report-dir", stringArg("report_dir", ""));
   const sourceDirs = [artifactDir, ...(reportDir ? [path.resolve(reportDir)] : [])];
@@ -1052,7 +1052,7 @@ function displayTitle(value: string) {
 }
 
 function reportBranch(reportRepo: string) {
-  return reportRepo.trim().toLowerCase() === "openclaw/clawsweeper-state" ? "state" : "main";
+  return reportRepo.trim().toLowerCase() === "time-attack/clawsweeper-state" ? "state" : "main";
 }
 
 function stripQuotes(value: string) {

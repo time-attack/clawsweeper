@@ -7,7 +7,7 @@ export function currentProjectRepo() {
     process.env.CLAWSWEEPER_REPO ||
     process.env.GITHUB_REPOSITORY ||
     repoFromOriginRemote() ||
-    "openclaw/clawsweeper"
+    "time-attack/clawsweeper"
   );
 }
 

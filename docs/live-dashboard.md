@@ -54,8 +54,8 @@ v2 claim responses. Deploying the reviewed Worker first remains the preferred
 order, but this rollout does not require disabling or draining ClawSweeper:
 
 ```bash
-gh workflow run dashboard.yml --repo openclaw/clawsweeper --ref <reviewed-branch>
-gh api "repos/openclaw/clawsweeper/actions/workflows/dashboard.yml/runs?per_page=1" \
+gh workflow run dashboard.yml --repo time-attack/clawsweeper --ref <reviewed-branch>
+gh api "repos/time-attack/clawsweeper/actions/workflows/dashboard.yml/runs?per_page=1" \
   --jq '.workflow_runs[0] | {id, status, conclusion, html_url}'
 ```
 

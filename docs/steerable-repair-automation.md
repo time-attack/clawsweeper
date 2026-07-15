@@ -62,7 +62,7 @@ Ownership boundaries:
 - **CrabFleet** owns the durable action-session registry, browser terminal
   relay, work-state timeline, terminal archives, and operator steering
   transport.
-- **`openclaw/clawsweeper-state`** owns generated operational state: jobs,
+- **`time-attack/clawsweeper-state`** owns generated operational state: jobs,
   reports, results, intake ledgers, notifications, and dashboard source data.
 - **GitCrawl** groups related GitHub items. ClawSweeper consumes a published
   SQLite snapshot; it does not crawl GitHub during cluster intake.
@@ -606,7 +606,7 @@ terminal grid and focused session URL.
 ### Durable State
 
 Generated operational state is stored on the `state` branch of
-`openclaw/clawsweeper-state`, including:
+`time-attack/clawsweeper-state`, including:
 
 - `jobs/`: queued and closed job markdown;
 - `records/`: issue, PR, and commit review reports;

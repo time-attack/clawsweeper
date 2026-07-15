@@ -1301,7 +1301,7 @@ interface AuditResult {
 }
 
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), "..");
-const REPORT_REPO = "openclaw/clawsweeper";
+const REPORT_REPO = "time-attack/clawsweeper";
 const RECORDS_ROOT = join(ROOT, "records");
 let activeRepositoryProfile = repositoryProfileFor(
   process.env.CLAWSWEEPER_TARGET_REPO ?? DEFAULT_TARGET_REPO,
@@ -23250,7 +23250,7 @@ function retryFailedReviewsCommandInner(args: Args): void {
   const dryRun = boolArg(args.dry_run);
   const workflowRepo = stringArg(
     args.workflow_repo,
-    process.env.GITHUB_REPOSITORY ?? "openclaw/clawsweeper",
+    process.env.GITHUB_REPOSITORY ?? "time-attack/clawsweeper",
   );
   const workflowRef = stringArg(args.workflow_ref, "main");
   const codexTimeoutMs = numberArg(args.codex_timeout_ms, DEFAULT_REVIEW_CODEX_TIMEOUT_MS);

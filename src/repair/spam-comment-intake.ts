@@ -45,7 +45,7 @@ export type SpamCommentIntakeSummary = {
 };
 
 const DEFAULT_REPORT_PATH = "notifications/spam-comment-intake-report.json";
-const DEFAULT_DISPATCH_REPO = "openclaw/clawsweeper";
+const DEFAULT_DISPATCH_REPO = "time-attack/clawsweeper";
 
 if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) {
   runSpamCommentIntake(process.argv.slice(2))

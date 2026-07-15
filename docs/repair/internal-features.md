@@ -231,7 +231,7 @@ ClawSweeper can dispatch `clawsweeper_commit_finding` when a main-branch commit
 review report has `result: findings`. ClawSweeper treats that report as a source
 finding, not as an order to open a PR.
 
-The intake step fetches the report from latest `openclaw/clawsweeper@main`,
+The intake step fetches the report from latest `time-attack/clawsweeper@main`,
 writes one audit file, and then decides whether an automatic repair PR is
 allowed:
 

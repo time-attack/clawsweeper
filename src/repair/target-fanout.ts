@@ -63,7 +63,7 @@ export async function runTargetFanout(argv: string[]): Promise<void> {
     mode,
     limit: positiveNumber(stringArg(args.limit, defaultLimit(mode)), "limit"),
     cursorPath: stringArg(args["cursor-path"], join(DEFAULT_CURSOR_DIR, `${mode}.json`)),
-    dispatchRepo: stringArg(args.repo, process.env.GITHUB_REPOSITORY ?? "openclaw/clawsweeper"),
+    dispatchRepo: stringArg(args.repo, process.env.GITHUB_REPOSITORY ?? "time-attack/clawsweeper"),
     workflow: stringArg(args.workflow, "sweep.yml"),
     ref: stringArg(args.ref, "main"),
     dryRun: Boolean(args["dry-run"]),

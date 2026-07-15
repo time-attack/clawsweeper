@@ -32,7 +32,7 @@ else die(`unknown command: ${command}`);
 function prepare() {
   const enabled = stringArg("enabled", "true");
   const targetRepo = stringArg("target-repo", stringArg("target_repo", "openclaw/openclaw"));
-  const reportRepo = stringArg("report-repo", stringArg("report_repo", "openclaw/clawsweeper"));
+  const reportRepo = stringArg("report-repo", stringArg("report_repo", "time-attack/clawsweeper"));
   const sha = assertSha(stringArg("commit-sha", stringArg("commit_sha", "")));
   const reportPath = stringArg(
     "report-path",

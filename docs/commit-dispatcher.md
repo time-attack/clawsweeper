@@ -1,7 +1,7 @@
 # Commit Review Dispatcher
 
 Automatic push-triggered commit review is disabled in the production
-`openclaw/clawsweeper` receiver. Maintainers can still run
+`time-attack/clawsweeper` receiver. Maintainers can still run
 `.github/workflows/commit-review.yml` manually for selected commits or ranges.
 
 Historically, target repositories forwarded `push` events with
@@ -45,7 +45,7 @@ jobs:
     if: ${{ vars.CLAWSWEEPER_COMMIT_REVIEW_ENABLED != 'false' }}
     env:
       HAS_CLAWSWEEPER_APP_PRIVATE_KEY: ${{ secrets.CLAWSWEEPER_APP_PRIVATE_KEY != '' }}
-      CLAWSWEEPER_APP_CLIENT_ID: Iv23liOECG0slfuhz093
+      CLAWSWEEPER_APP_CLIENT_ID: Iv23liQswtjAxzxkCqb4
     steps:
       - name: Create ClawSweeper dispatch token
         id: token
@@ -80,7 +80,7 @@ jobs:
             --arg ref "refs/heads/main" \
             --argjson create_checks "$create_checks" \
             '{event_type:"clawsweeper_commit_review",client_payload:{target_repo:$target_repo,before_sha:$before_sha,after_sha:$after_sha,ref:$ref,enabled:true,create_checks:$create_checks}}')"
-          gh api repos/openclaw/clawsweeper/dispatches \
+          gh api repos/time-attack/clawsweeper/dispatches \
             --method POST \
             --input - <<< "$payload"
 ```
@@ -98,7 +98,7 @@ CLAWSWEEPER_COMMIT_REVIEW_CREATE_CHECKS=true
 ```
 
 The receiver waits 60 seconds before selecting commits by default. Adjust on
-`openclaw/clawsweeper` only when needed:
+`time-attack/clawsweeper` only when needed:
 
 ```text
 CLAWSWEEPER_COMMIT_REVIEW_SETTLE_SECONDS=60
@@ -113,7 +113,7 @@ capacity before each page. Active repair, exact-item review, and sweep work can
 lower the page size so commit review does not consume capacity needed by
 maintainer-visible work. The checked-in default comes from
 `config/automation-limits.json`; adjust the live workflow on
-`openclaw/clawsweeper` only when the org has enough rate-limit headroom:
+`time-attack/clawsweeper` only when the org has enough rate-limit headroom:
 
 ```text
 CLAWSWEEPER_COMMIT_REVIEW_PAGE_SIZE=6
